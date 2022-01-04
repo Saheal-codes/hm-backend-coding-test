@@ -13,7 +13,7 @@
     "hook-remove": "prepush remove",
     "hook-install": "prepush install"  },
   "prepush" : {
-    "tasks" : ["npm run-script coverage"]
+    "tasks" : "npm run coverage"
   },
   "keywords": [
     "Hodomojo"
