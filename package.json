@@ -11,10 +11,9 @@
     "start": "node index.js",
     "coverage": "nyc npm run test",
     "hook-remove": "prepush remove",
-    "hook-install": "prepush install"  },
-  "prepush" : {
-    "tasks" : ["coverage"]
+    "hook-install": "prepush install"  
   },
+  "pre-push" : ["coverage"],
   "keywords": [
     "Hodomojo"
   ],
