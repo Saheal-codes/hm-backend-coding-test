@@ -1,10 +1,11 @@
 'use strict';
-
+const logger=require('../logger');
 const express = require('express');
 const app = express();
 
 const bodyParser = require('body-parser');
 const jsonParser = bodyParser.json();
+
 
 module.exports = (db) => {
     app.get('/health', (req, res) => res.send('Healthy'));
@@ -19,6 +20,7 @@ module.exports = (db) => {
         const driverVehicle = req.body.driver_vehicle;
 
         if (startLatitude < -90 || startLatitude > 90 || startLongitude < -180 || startLongitude > 180) {
+            logger.info('Wrong Coordinates entered')
             return res.send({
                 error_code: 'VALIDATION_ERROR',
                 message: 'Start latitude and longitude must be between -90 - 90 and -180 to 180 degrees respectively'
@@ -26,6 +28,7 @@ module.exports = (db) => {
         }
 
         if (endLatitude < -90 || endLatitude > 90 || endLongitude < -180 || endLongitude > 180) {
+            logger.info('Wrong Coordinates entered')
             return res.send({
                 error_code: 'VALIDATION_ERROR',
                 message: 'End latitude and longitude must be between -90 - 90 and -180 to 180 degrees respectively'
