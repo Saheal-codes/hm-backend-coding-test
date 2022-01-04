@@ -9,9 +9,7 @@
   "scripts": {
     "test": "mocha tests",
     "start": "node index.js",
-    "coverage": "nyc npm run test",
-    "hook-remove": "prepush remove",
-    "hook-install": "prepush install"  
+    "coverage": "nyc npm run test"
   },
   "pre-push" : ["coverage"],
   "keywords": [
