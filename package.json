@@ -9,7 +9,8 @@
   "scripts": {
     "test": "mocha tests",
     "start": "node index.js",
-    "coverage": "nyc npm run test"
+    "coverage": "nyc npm run test",
+    "lint":".\\node_modules\\.bin\\eslint ."
   },
   "pre-push" : ["coverage"],
   "keywords": [
