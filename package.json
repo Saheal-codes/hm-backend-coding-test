@@ -9,7 +9,13 @@
   "scripts": {
     "test": "mocha tests",
     "start": "node index.js",
-    "coverage": "nyc npm run test"
+    "coverage": "nyc npm run test",
+    "hook-remove": "prepush remove",
+    "hook-install": "prepush install",
+    "prepush": "npm run coverage"
+  },
+  "prepush" : {
+    "tasks" : ["npm run prepush"]
   },
   "keywords": [
     "Hodomojo"
@@ -19,7 +25,6 @@
   "dependencies": {
     "body-parser": "^1.19.0",
     "express": "^4.16.4",
-    "pre-push": "^0.1.1",
     "sqlite3": "^5.0.2",
     "winston": "^3.3.3"
   },
@@ -27,6 +32,7 @@
     "eslint": "^8.6.0",
     "mocha": "^6.1.4",
     "nyc": "^15.1.0",
-    "supertest": "^4.0.2"
+    "supertest": "^4.0.2",
+    "pre-push": "^0.1.1"
   }
 }
