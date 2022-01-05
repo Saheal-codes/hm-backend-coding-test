@@ -80,8 +80,19 @@ module.exports = (db) => {
     });
 
     app.get('/rides', (req, res) => {
-        db.all('SELECT * FROM Rides', function (err, rows) {
+        console.log(req.query)
+        if (!Number(req.query.skip)){
+            req.query.skip=0
+        }
+        if (!Number(req.query.limit)){
+            req.query.limit=10
+        }
+        const comm= 'SELECT * FROM Rides ORDER BY rideID LIMIT ' + req.query.limit + ' OFFSET ' + req.query.skip
+        console.log(comm)
+        db.all(comm, function (err, rows) {
             if (err) {
+                console.log(err)
+                logger.error(err)
                 return res.send({
                     error_code: 'SERVER_ERROR',
                     message: 'Unknown error'
