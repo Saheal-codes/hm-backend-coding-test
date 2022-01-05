@@ -111,9 +111,17 @@ describe('API tests', () => {
         });
     });
     describe('GET /rides', () => {
-        it('should return all rides', (done) => {
+        it('should return maximum 10 rides', (done) => {
             request(app)
                 .get('/rides')
+                .expect('Content-Type', /json/)
+                .expect(200, done);
+        });
+    });
+    describe('GET /rides', () => {
+        it('should return paginated rides', (done) => {
+            request(app)
+                .get('/rides?skip=3&limit=3')
                 .expect('Content-Type', /json/)
                 .expect(200, done);
         });
